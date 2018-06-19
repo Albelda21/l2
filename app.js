@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 })
 
 // render `home.ejs` with the list of posts
-app.get(['/apply', '/contact', '/policy', '/terms'], (req, res) => {
+app.get(['/apply', '/contact', '/privacy', '/terms'], (req, res) => {
 
     let renderView = req.path.replace(/\//g, "");
 
