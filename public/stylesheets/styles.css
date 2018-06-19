@@ -1,0 +1,599 @@
+/* CSS Document */
+
+/* ==================================================================
+		RESET CSS
+	 ================================================================== */
+
+article,aside,details,figcaption,figure,footer,header,hgroup,hr,menu,nav,section{display:block}a,hr{padding:0}abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:0 0}ins,mark{background-color:#ff9;color:#000}body{line-height:1}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}a{margin:0;font-size:100%;vertical-align:baseline;background:0 0}ins{text-decoration:none}mark{font-style:italic;font-weight:700}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{height:1px;border:0;border-top:1px solid #ccc;margin:1em 0}input,select{vertical-align:middle}
+
+
+/* ==================================================================
+		BASE STYLES
+	 ================================================================== */
+
+/* STICKY FOOTER CSS */
+
+* {
+    box-sizing: border-box;
+    font-family:inherit;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+    display: table;
+    font-family: 'Raleway', Arial;
+    font-weight:400;
+}
+
+h1, h2, h3, h4, h5, h6{
+		font-weight:inherit;
+}
+
+.content-bg,
+footer {
+    display: table-row;
+}
+
+.content-bg {
+    background: url(../images/body-bg.jpg) no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
+
+
+/* INPUT PLACEHOLDER ATTRIBUTE COLOR STYLING */
+
+input::placeholder {
+    color: #3a9ac4;
+}
+
+input::-webkit-input-placeholder {
+    color: #3a9ac4;
+}
+
+input::-moz-placeholder {
+    color: #3a9ac4;
+}
+
+input:-ms-input-placeholder {
+    color: #3a9ac4;
+}
+
+input:-moz-placeholder {
+    color: #3a9ac4;
+}
+
+img {
+    max-width: 100%;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ==================================================================
+		LAYOUT STYLES
+	 ================================================================== */
+
+.clearfix {
+    float: none;
+    display: block;
+    clear: both;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.container:after {
+    content: '';
+    clear: both;
+    display: block;
+    float: none;
+}
+
+.header {
+    padding: 13px 0;
+    border-bottom: 1px solid #2f7fa1;
+}
+
+.constrained {
+    width: 100%;
+    max-width: 750px;
+    margin: 50px auto 0;
+}
+
+.inner-page > .constrained{
+		margin:50px auto 70px auto;
+}
+
+.inner-page > .container{
+		padding:0 20px;
+}
+
+.footer {
+    padding: 15px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #858585;
+    line-height: 26px;
+    clear: both;
+    position: relative;
+    bottom: 0;
+    clear: both;
+    background-color: #f2f4f3;
+}
+
+.footer a {
+    color: #858585;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 0 10px;
+}
+
+.footer a:hover,
+.footer a:focus {
+    text-decoration: none;
+}
+
+.footer .disclaimer {
+    font-size: 12px;
+    line-height: 1;
+    padding: 20px;
+}
+
+
+/* ==================================================================
+		MODULE STYLES
+	 ================================================================== */
+
+/* REUSABLE CLASSES */
+.align-center{
+	text-align:center;
+}
+
+.divider{
+	margin-bottom:10px;
+	padding-top:10px;
+	border-bottom:1px solid #fff;
+	opacity:0.4;
+	filter: alpha(opacity=40);
+}
+
+.logo {
+    float: left;
+    margin-top: 10px;
+}
+
+
+/* PROGRESS BAR */
+
+.steps-progress {
+    display: block;
+    list-style: none;
+    padding: 20px 0 50px;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.steps-progress li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 5px;
+    height: 20px;
+    vertical-align: -webkit-baseline-middle;
+}
+
+.steps-progress li img {
+    vertical-align: text-top;
+}
+
+.steps-progress .stepdot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #7dc7e8;
+    border: 1px solid #fff;
+}
+
+.steps-progress li.stepdot.done {
+    background: #7de8a3;
+}
+
+.steps-progress li.stepdot.active {
+    transform: scale(2);
+    background: #d7d7d7;
+}
+
+
+/* FORM MODULES */
+
+.multistepbox {
+    padding: 20px 0;
+    display: none;
+}
+
+.multistepbox.active {
+    display: block;
+}
+
+.multistepbox h2 {
+    font-size: 26px;
+    display: block;
+    text-align: center;
+    padding: 20px 0;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
+/* FORM INPUT STYLES */
+
+.selectbox, 
+.txtbox,
+.radioopt{
+	padding: 20px 0;
+	text-align:center;
+}
+
+.selectbox > select{
+    
+    height: 60px;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #3a9ac4;
+    font-size: 26px;
+    border: 3px solid #3f94ba;
+    margin: 0 1%;
+    text-align: center;
+    text-align-last: center;
+}
+
+.select-large > select{
+		width: 100%;
+    max-width: 300px;
+}
+
+.select-thirds > select{
+		width: 32%;
+    max-width: 200px;
+}
+
+.radioopt input[type="radio"] {
+    display: none;
+}
+
+.radioopt label {
+    width: 180px;
+    height: 180px;
+    display: inline-block;
+    border: 3px solid #c4edff;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.radioopt label span,
+.radioopt label i {
+    font-size: 72px;
+    color: #c4edff;
+    display: block;
+    text-align: center;
+    padding: 40px 0 10px 0;
+}
+
+.radioopt label:hover {
+    background: #fff;
+    border-color: #587591;
+    color: #595959;
+}
+
+.radioopt label:hover span {
+    color: #68b6d8;
+}
+
+.txtbox input {
+    width: 100%;
+    max-width: 350px;
+    height: 65px;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #3a9ac4;
+    font-size: 26px;
+    border: 3px solid #3f94ba;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.chckbox {
+    display: block;
+    max-width: 350px;
+    margin: 10px auto;
+    text-align: left;
+}
+
+.chckbox input[type="checkbox"] {
+    display: none;
+}
+
+.chckbox label {
+    font-size: 12px;
+    line-height: 18px;
+    color: #fff;
+    text-align: left;
+}
+
+.chckbox label span {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #fff;
+    border: 3px solid #4196bb;
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.chckbox input:checked+label span {
+    background: url(../images/tick.png) center center no-repeat #fff;
+}
+
+.btn{
+    width: 100%;
+    max-width: 350px;
+    height: 70px;
+    border-radius: 10px;
+    background: #ffea00;
+    font-size: 26px;
+    font-weight:bold;
+    border: none;
+    margin: 25px auto;
+    cursor: pointer;
+}
+
+.btn-yellow{
+		color: #262626;
+		background: #ffea00;
+}
+
+.small_description {
+    color: #fff;
+    font-size: 14px;
+    margin: 15px auto;
+    line-height: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 5px 10px;
+    max-width: 350px;
+}
+
+
+/* FORM STATES */
+
+.txtbox .error, 
+.selectbox .error {
+    border: 1px solid #ff0000;
+}
+
+.error_message {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+label.error {
+    display: none !important;
+    width: 0;
+    height: 0;
+}
+
+
+/* INNER PAGE STYLING */
+
+.inner-page h2{
+    font-size: 26px;
+    padding: 20px 0;
+    color: #fff;
+    text-transform: uppercase;
+    line-height:1.2;
+}
+
+.inner-page p {
+    color: #fff;
+    margin-bottom: 15px;
+    line-height:1.3;
+}
+
+.inner-page a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.inner-page a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact-box {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+.contact-box a {
+    text-decoration: none;
+}
+
+.call-box {
+    padding-left: 90px;
+    background: url(../images/callicon.png) no-repeat 0px 25px;
+    text-align: left;
+}
+
+.badges{
+	margin:5px 0 10px 0;
+}
+
+.badges span{
+	display:inline-block;
+}
+
+.badges > span:first-child{
+	margin-right:10px;
+}
+
+.badges > span:last-child{
+	margin-left:8px;
+}
+
+.badges img{
+	opacity:0.6;
+	filter: alpha(opacity=60);
+}
+
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+    select {
+        -webkit-appearance: menulist-button !important;
+        line-height: 60px !important;
+    }
+
+}
+
+@media screen and (max-width:1600px) {
+
+    .steps-progress {
+        padding: 20px 0;
+    }
+
+}
+
+@media screen and (max-width:1100px) {
+
+    .constrained {
+        margin: 20px auto 0;
+    }
+
+		.inner-page > .constrained{
+				margin:20px auto 40px auto;
+		}
+
+    .header {
+        padding: 10px;
+    }
+
+}
+
+@media screen and (max-width:767px) {
+
+    .multistepbox h2{
+        font-size: 22px;
+    }
+
+    .radioopt label {
+        height: 120px;
+        width: 120px;
+        font-size: 12px;
+    }
+
+    .radioopt label span,
+    .radioopt label i {
+        font-size: 48px;
+        padding: 20px 0 0 0;
+    }
+
+    .btn,
+    .txtbox input{
+        max-width: 250px;
+        height: 50px;
+        font-size: 22px;
+    }
+
+    .steps-progress li {
+        max-width: 45px;
+        height: 10px;
+    }
+
+    .steps-progress li img{
+    	margin-top:2px;
+    }
+
+    .steps-progress li.stepdot {
+        width: 15px;
+        height: 15px;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width:480px) {
+
+    .multistepbox h2{
+        font-size: 18px;
+        padding: 0;
+    }
+
+    .steps-progress li {
+        max-width: 30px;
+        height: 8px;
+        margin: 0 2px;
+    }
+
+    .steps-progress li img{
+    	margin-top:4px;
+    }
+
+    .steps-progress .stepdot {
+        width: 12px;
+        height: 12px;
+    }
+
+
+    .radioopt label {
+        width: 95px;
+        height: 95px;
+        font-size: 10px;
+        margin: 0 1px;
+    }
+
+    .radioopt label span,
+    .radioopt label i {
+        font-size: 36px;
+        padding: 10px 0 0 0;
+    }
+
+    .selectbox > select{
+    	  font-size:20px;
+    }
+
+    .select-thirds > select{
+    		width:30%;
+    		font-size:16px;
+    }
+
+    .call-box {
+    		margin-top:20px;
+        padding:90px 0 0 0;
+        background-position: top center;
+        text-align:center;
+    }
+
+}
