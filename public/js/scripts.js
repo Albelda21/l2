@@ -6,7 +6,7 @@ $(document).ready(function() {
 			var curstep = $(this).closest('.multistepbox');
 
 			if(curstep.hasClass('finalstep')) {
-				window.location='thankyou.html';
+				window.location='thankyou';
 			} 
 
 			else {

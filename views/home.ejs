@@ -1,3 +1,311 @@
     <%- include('partials/header') %>
-    <%= content %>
+    <!-- PROGRESS BAR -->
+    <ul class="steps-progress">
+        <li class="stepdot active"></li>
+        <li><img src="images/step-after.png" alt="stepsept"></li>
+
+        <li class="stepdot"></li>
+        <li><img src="images/step-after.png" alt="stepsept"></li>
+
+        <li class="stepdot"></li>
+        <li><img src="images/step-after.png" alt="stepsept"></li>
+
+        <li class="stepdot"></li>
+        <li><img src="images/step-after.png" alt="stepsept"></li>
+
+        <li class="stepdot"></li>
+        <li><img src="images/step-after.png" alt="stepsept"></li>
+
+        <li class="stepdot"></li>
+    </ul>
+    <!-- END PROGRESS BAR -->
+
+    <!-- EXAMPLE MULTI-STEP FORM -->
+    <form action="thankyou.ejs" method="post" name="multistep" id="multisteps">
+
+        <input type="hidden" name="aff_id1" value="" id="aff_id1">
+        <input type="hidden" name="leadsource" value="">
+
+        <div class="multistepbox step-1 active">
+            <h2>I need life insurance for:</h2>
+
+            <div class="radioopt">
+                <input type="radio" name="cover_for" id="insureformy" value="Just me">
+                <label for="insureformy"> <span class="icon-single"></span> Just Me </label>
+                <input type="radio" name="cover_for" id="insureformyother" value="Myself & Another">
+                <label for="insureformyother"> <span class="icon-me-partner"></span> Myself &amp; Another </label>
+            </div>
+        </div>
+
+        <div class="multistepbox step-2">
+            <h2>What would you like to cover?</h2>
+
+            <div class="radioopt">
+                <input type="radio" name="what_to_cover" id="recoverfamily" value="Family">
+                <label for="recoverfamily">
+                    <span class="icon-family"></span> My Family
+                </label>
+
+                <input type="radio" name="what_to_cover" id="recovermortgage" value="Mortgage">
+                <label for="recovermortgage">
+                    <span class="icon-morgage"></span> My Mortgage
+                </label>
+
+                <input type="radio" name="what_to_cover" id="recoverfammor" value="Family & Mortgage">
+                <label for="recoverfammor">
+                    <span class="icon-family-morgage"></span> Family &amp; Mortgage
+                </label>
+            </div>
+        </div>
+
+        <div class="multistepbox step-3">
+            <h2>How much cover would you like?</h2>
+
+            <div class="txtbox">
+                <input type="number" name="cover" value="" min="100000" step="5000" pattern="[0-9]*" placeholder="Coverage Amount" required>
+                <button type="button" name="continue" class="btn btn-yellow clearfix">CONTINUE!</button>
+            </div>
+        </div>
+
+        <div class="multistepbox step-4">
+            <h2>What is your occupation?</h2>
+
+            <div class="txtbox">
+                <input type="text" name="occupation" placeholder="Occupation" required>
+                <button type="button" name="continue" class="btn btn-yellow clearfix">CONTINUE!</button>
+            </div>
+        </div>
+
+        <div class="multistepbox step-5">
+            <h2>What is your annual income?</h2>
+
+            <div class="selectbox select-large">
+                <select name="income" required>
+                    <option value="">- Annual Income -</option>
+                    <option value="Less than $50,000">Less than $50,000</option>
+                    <option value="$50,000 to $75,000">$50,000 to $75,000</option>
+                    <option value="More than $75,000">More than $75,000</option>
+                </select>
+                <button type="button" name="continue" class="btn btn-yellow clearfix">CONTINUE!</button>
+            </div>
+        </div>
+
+        <div class="multistepbox step-6">
+            <h2>I am:</h2>
+
+            <div class="radioopt">
+                <input type="radio" name="gender" id="genmale" value="Male">
+                <label for="genmale">
+                    <span class="icon-male"></span> Male
+                </label>
+
+                <input type="radio" name="gender" id="genfemale" value="Female">
+                <label for="genfemale">
+                    <span class="icon-female"></span> Female
+                </label>
+            </div>
+        </div>
+
+        <div class="multistepbox step-7">
+            <h2>Do you currently have a life insurance policy?</h2>
+
+            <div class="radioopt">
+                <input type="radio" name="current_cover" id="coveryes" value="Yes">
+                <label for="coveryes">
+                    <i class="fa fa-thumbs-o-up"></i>Yes
+                </label>
+
+                <input type="radio" name="current_cover" id="coverno" value="No">
+                <label for="coverno">
+                    <i class="fa fa-thumbs-o-down"></i> No
+                </label>
+            </div>
+        </div>
+
+        <div class="multistepbox step-8">
+            <h2>Have you used tobacco or nicotine products in the last 12 months?</h2>
+
+            <div class="radioopt">
+                <input type="radio" name="smoking_status" id="tobacoy" value="Yes">
+                <label for="tobacoy">
+                    <span class="icon-smoking"></span> Yes
+                </label>
+
+                <input type="radio" name="smoking_status" id="tobacon" value="No">
+                <label for="tobacon">
+                    <span class="icon-no-smoking"></span> No
+                </label>
+            </div>
+        </div>
+
+        <div class="multistepbox step-9">
+            <h2>What is your first name?</h2>
+
+            <div class="txtbox">
+                <input type="text" name="p1_firstname" placeholder="First Name" data-rule-minlength="2" required>
+                <button type="button" name="continue" class="btn btn-yellow clearfix">CONTINUE!</button>
+            </div>
+        </div>
+
+        <div class="multistepbox step-10">
+            <h2>What is your last name?</h2>
+
+            <div class="txtbox">
+                <input type="text" name="lastname" placeholder="Last Name" data-rule-minlength="2" required>
+                <button type="button" name="continue" class="btn btn-yellow clearfix">CONTINUE!</button>
+            </div>
+        </div>
+
+        <div class="multistepbox step-11">
+            <h2>What is your date of birth?</h2>
+
+            <div class="selectbox select-thirds">
+                <select name="birthdate_day" required>
+                    <option value="">- Day -</option>
+                    <option value="01">1</option>
+                    <option value="02">2</option>
+                    <option value="03">3</option>
+                    <option value="04">4</option>
+                    <option value="05">5</option>
+                    <option value="06">6</option>
+                    <option value="07">7</option>
+                    <option value="08">8</option>
+                    <option value="09">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+
+                <select name="birthdate_month" required>
+                    <option value="">- Month -</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+
+                <select name="birthdate_year" required>
+                    <option value="">- Year -</option>
+                    <option value="1999">1999</option>
+                    <option value="1998">1998</option>
+                    <option value="1997">1997</option>
+                    <option value="1996">1996</option>
+                    <option value="1995">1995</option>
+                    <option value="1994">1994</option>
+                    <option value="1993">1993</option>
+                    <option value="1992">1992</option>
+                    <option value="1991">1991</option>
+                    <option value="1990">1990</option>
+                    <option value="1989">1989</option>
+                    <option value="1988">1988</option>
+                    <option value="1987">1987</option>
+                    <option value="1986">1986</option>
+                    <option value="1985">1985</option>
+                    <option value="1984">1984</option>
+                    <option value="1983">1983</option>
+                    <option value="1982">1982</option>
+                    <option value="1981">1981</option>
+                    <option value="1980">1980</option>
+                    <option value="1979">1979</option>
+                    <option value="1978">1978</option>
+                    <option value="1977">1977</option>
+                    <option value="1976">1976</option>
+                    <option value="1975">1975</option>
+                    <option value="1974">1974</option>
+                    <option value="1973">1973</option>
+                    <option value="1972">1972</option>
+                    <option value="1971">1971</option>
+                    <option value="1970">1970</option>
+                    <option value="1969">1969</option>
+                    <option value="1968">1968</option>
+                    <option value="1967">1967</option>
+                    <option value="1966">1966</option>
+                    <option value="1965">1965</option>
+                    <option value="1964">1964</option>
+                    <option value="1963">1963</option>
+                    <option value="1962">1962</option>
+                    <option value="1961">1961</option>
+                    <option value="1960">1960</option>
+                    <option value="1959">1959</option>
+                    <option value="1958">1958</option>
+                    <option value="1957">1957</option>
+                    <option value="1956">1956</option>
+                    <option value="1955">1955</option>
+                    <option value="1954">1954</option>
+                    <option value="1953">1953</option>
+                    <option value="1952">1952</option>
+                    <option value="1951">1951</option>
+                    <option value="1950">1950</option>
+                </select>
+                <button type="button" name="continue" class="btn btn-yellow clearfix">CONTINUE!</button>
+            </div>
+        </div>
+
+        <div class="multistepbox step-12">
+            <h2>What is your postcode?</h2>
+
+            <div class="txtbox">
+                <input type="number" name="postcode" data-rule-minlength="4" data-rule-maxlength="4" placeholder="Postcode" required>
+                <button type="button" name="continue" class="btn btn-yellow clearfix">CONTINUE!</button>
+            </div>
+        </div>
+
+        <div class="multistepbox step-13">
+            <h2>What is your email address?</h2>
+
+            <div class="txtbox">
+                <input type="email" name="email" placeholder="jondoe@example.com" required>
+
+                <div class="chckbox clearfix">
+                    <input type="checkbox" name="agree_to_email" value="yes" id="agreecheck" checked>
+                    <label for="agreecheck"><span></span> I agree to receive email. My privacy is 100% protected and I understand I can unsubscribe at any time. See our privacy policy and terms for more info.</label>
+                </div>
+
+                <button type="button" name="continue" class="btn btn-yellow clearfix">CONTINUE!</button>
+            </div>
+        </div>
+
+        <div class="multistepbox step-14 finalstep">
+            <h2>Last Step! What is your mobile phone number?</h2>
+
+            <div class="txtbox">
+                <input type="text" name="mobile" id="mobile" placeholder="Mobile Phone" data-rule-pattern="^(?=\d{10}$)(02|03|04|08|07)\d+" required>
+                <p class="small_description clearfix">Please enter phone number with digits only and no spaces. <b>Example: 0415121588</b></p>
+
+                <div class="chckbox clearfix">
+                    <input type="checkbox" name="agree_to_call" value="yes" id="agreecheck2" required data-rule-required="true">
+                    <label for="agreecheck2"><span></span> I agree to be contacted by phone or SMS by an insurance consultant and to the following privacy policy and terms.</label>
+                </div>
+                <button type="button" name="continue" class="btn btn-yellow clearfix">CONTINUE!</button>
+            </div>
+        </div> <!-- end step-14 -->
+
+    </form>
     <%- include('partials/footer') %>
