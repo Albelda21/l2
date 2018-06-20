@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+const curl = new (require( 'curl-request' ))();
 
 
 // set the view engine to ejs
@@ -12,9 +13,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
 
     let domain = 'zazu';
+    let data;
+    let landingData;
 
-    // render `home.ejs` with the list of posts
-    res.render('home', { content: '<h1>Content</h1>' })
+    curl.get('localhost:3030/api/landing/'+domain)
+        .then(({statusCode, body, headers}) => {
+
+            data = JSON.parse(body)
+
+            landingData = data[0]
+
+            console.log(landingData)
+
+            // render `home.ejs` with the list of posts
+            res.render('home', { title: landingData.meta.title })
+        })
+        .catch((e) => {
+            console.log(e);
+        });
 })
 
 // render `home.ejs` with the list of posts
@@ -22,7 +38,7 @@ app.get(['/apply', '/contact', '/privacy', '/terms', '/thankyou'], (req, res) =>
 
     let renderView = req.path.replace(/\//g, "");
 
-    res.render(renderView, { content: '<h1>APPLY!#!@#!@#!@#!@#!@#</h1>' })
+    res.render(renderView, { content: '<h1>APPLY!#!@#!@#!@#!@#!@#</h1>', title:"Contact"})
 })
 
 // blog post
