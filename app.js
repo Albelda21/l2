@@ -23,23 +23,32 @@ app.get('/', (req, res) => {
             data = JSON.parse(body)
 
             landingData = data[0]
-            //
-            // console.log(landingData)
 
             //snippets for general settings
             res.render('home', {
-                title: landingData.meta.title,
-                keywords:landingData.meta.keywords,
-                description:landingData.meta.description,
-                copyright:landingData.footer.copyright,
-                text:landingData.footer.text,
-                logo:landingData.media.logo,
-                favicon:landingData.media.favicon,
-                color:landingData.color.accent
+                title: landingData ? landingData.meta.title : "",
+                keywords:landingData ? landingData.meta.keywords : "",
+                description:landingData ? landingData.meta.description : "",
+                copyright:landingData ? landingData.footer.copyright : "",
+                text:landingData ? landingData.footer.text : "",
+                logo:landingData ? landingData.media.logo : "",
+                favicon:landingData ? landingData.media.favicon : "",
+                color:landingData ? landingData.color.accent : ""
             })
         })
         .catch((e) => {
-            console.log(e);
+            console.log("Api does not response!");
+
+            res.render('home', {
+                title: landingData ? landingData.meta.title : "",
+                keywords:landingData ? landingData.meta.keywords : "",
+                description:landingData ? landingData.meta.description : "",
+                copyright:landingData ? landingData.footer.copyright : "",
+                text:landingData ? landingData.footer.text : "",
+                logo:landingData ? landingData.media.logo : "",
+                favicon:landingData ? landingData.media.favicon : "",
+                color:landingData ? landingData.color.accent : ""
+            })
         });
 })
 
