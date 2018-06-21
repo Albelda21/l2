@@ -43,7 +43,7 @@
         <input type="hidden" name="leadsource" value="">
 
         <div class="multistepbox step-1 active">
-            <h2>I need life insurance for:</h2>
+            <h2 style="color:<%= color %> !important;">I need life insurance for:</h2>
 
             <div class="radioopt">
                 <input type="radio" name="cover_for" id="insureformy" value="Just me">
@@ -326,12 +326,6 @@
     </form>
     <%- include('partials/footer') %>
 
-
-    <p class="disclaimer">Disclaimer: australianinsure.com is a referral service. We provide general information only and we do not offer financial advice. We refer all life insurance enquiries that are initiated on this website to specialist advisers who are licensed in providing life insurance quotes. You should always seek professional advice before making important financial decisions.</p>
-    <small>&copy; Copyright 2018, <%= copyright %></small>
-    </div>
-    </div>
-    </footer>
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
 

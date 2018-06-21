@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // blog home page
 app.get('/', (req, res) => {
 
+    // let domain = req.headers.host.split(".")[0];
     let domain = 'zazu';
     let data;
     let landingData;
@@ -22,8 +23,8 @@ app.get('/', (req, res) => {
             data = JSON.parse(body)
 
             landingData = data[0]
-
-            console.log(landingData)
+            //
+            // console.log(landingData)
 
             //snippets for general settings
             res.render('home', {
@@ -45,7 +46,13 @@ app.get('/', (req, res) => {
 // render `home.ejs` with the list of posts
 app.get(['/confirmation', '/contact', '/privacy', '/terms', '/thankyou'], (req, res) => {
 
+
     let domain = 'zazu';
+
+    if(!domain){
+        domain = req.headers.host.split(".")[0];
+    }
+
     let renderView = req.path.replace(/\//g, "");
     let dataForPage
 
@@ -63,11 +70,11 @@ app.get(['/confirmation', '/contact', '/privacy', '/terms', '/thankyou'], (req, 
                }
             }
 
-            console.log(dataForPage)
+            // console.log(dataForPage)
 
             //snippets for general settings
             res.render(renderView, {
-                title: dataForPage.header,
+                title: dataForPage ? dataForPage.header : "",
                 keywords:landingData.meta.keywords,
                 description:landingData.meta.description,
                 copyright:landingData.footer.copyright,
@@ -75,7 +82,7 @@ app.get(['/confirmation', '/contact', '/privacy', '/terms', '/thankyou'], (req, 
                 logo:landingData.media.logo,
                 favicon:landingData.media.favicon,
                 color:landingData.color.accent,
-                content:dataForPage.content
+                content:dataForPage ? dataForPage.content : ""
             })
         })
         .catch((e) => {
