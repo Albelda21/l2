@@ -12,8 +12,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // blog home page
 app.get('/', (req, res) => {
 
-    // let domain = req.headers.host.split(".")[0];
-    let domain = 'zazu';
+    let domain = req.headers.host.split("-")[0];
+    // let domain = 'zazu';
     let data;
     let landingData;
 
