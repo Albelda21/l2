@@ -83,14 +83,14 @@ app.get(['/confirmation', '/contact', '/privacy', '/terms', '/thankyou'], (req, 
 
             //snippets for general settings
             res.render(renderView, {
-                title: dataForPage ? dataForPage.header : "",
-                keywords:landingData.meta.keywords,
-                description:landingData.meta.description,
-                copyright:landingData.footer.copyright,
-                text:landingData.footer.text,
-                logo:landingData.media.logo,
-                favicon:landingData.media.favicon,
-                color:landingData.color.accent,
+                title: landingData ? landingData.meta.title : "",
+                keywords:landingData ? landingData.meta.keywords : "",
+                description:landingData ? landingData.meta.description : "",
+                copyright:landingData ? landingData.footer.copyright : "",
+                text:landingData ? landingData.footer.text : "",
+                logo:landingData ? landingData.media.logo : "",
+                favicon:landingData ? landingData.media.favicon : "",
+                color:landingData ? landingData.color.accent : "",
                 content:dataForPage ? dataForPage.content : ""
             })
         })
@@ -114,6 +114,6 @@ app.get('/post/:id', (req, res) => {
     })
 })
 
-app.listen(8080)
+app.listen(3001)
 
-console.log('listening on port 8080')
+console.log('listening on port 3001')
