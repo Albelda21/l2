@@ -25,8 +25,17 @@ app.get('/', (req, res) => {
 
             console.log(landingData)
 
-            // render `home.ejs` with the list of posts
-            res.render('home', { title: landingData.meta.title })
+            //snippets for general settings
+            res.render('home', {
+                title: landingData.meta.title,
+                keywords:landingData.meta.keywords,
+                description:landingData.meta.description,
+                copyright:landingData.footer.copyright,
+                text:landingData.footer.text,
+                logo:landingData.media.logo,
+                favicon:landingData.media.favicon,
+                color:landingData.color.accent
+            })
         })
         .catch((e) => {
             console.log(e);
@@ -34,11 +43,44 @@ app.get('/', (req, res) => {
 })
 
 // render `home.ejs` with the list of posts
-app.get(['/apply', '/contact', '/privacy', '/terms', '/thankyou'], (req, res) => {
+app.get(['/confirmation', '/contact', '/privacy', '/terms', '/thankyou'], (req, res) => {
 
+    let domain = 'zazu';
     let renderView = req.path.replace(/\//g, "");
+    let dataForPage
 
-    res.render(renderView, { content: '<h1>APPLY!#!@#!@#!@#!@#!@#</h1>', title:"Contact"})
+    curl.get('localhost:3030/api/landing/'+domain)
+        .then(({statusCode, body, headers}) => {
+
+            data = JSON.parse(body)
+
+            landingData = data[0];
+            pageData = data[1];
+
+            for(index in pageData) {
+               if( pageData[index].type === renderView){
+                   dataForPage = pageData[index]
+               }
+            }
+
+            console.log(dataForPage)
+
+            //snippets for general settings
+            res.render(renderView, {
+                title: dataForPage.header,
+                keywords:landingData.meta.keywords,
+                description:landingData.meta.description,
+                copyright:landingData.footer.copyright,
+                text:landingData.footer.text,
+                logo:landingData.media.logo,
+                favicon:landingData.media.favicon,
+                color:landingData.color.accent,
+                content:dataForPage.content
+            })
+        })
+        .catch((e) => {
+            console.log(e);
+        });
 })
 
 // blog post
@@ -48,7 +90,7 @@ app.get('/post/:id', (req, res) => {
         return post.id == req.params.id
     })[0]
 
-    // render the `apply.ejs` template with the post content
+    // render the `confirmation.ejs` template with the post content
     res.render('post', {
         author: post.author,
         title: post.title,
